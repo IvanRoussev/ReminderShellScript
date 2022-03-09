@@ -1,0 +1,128 @@
+#!/bin/bash
+#: Title       : script3_reminder
+#: Date        : Feb 22 2022
+#: Author      : Ivan Roussev
+#: Version     : 1.0
+#: Description : reminder script (create reminder and read reminder)
+#: Options     : Read HelpFunc
+
+
+FILENAME="reminder"
+
+readInput () {
+while read input
+do 
+  echo $input >> $FILENAME
+done
+}
+
+helpFunc () {
+echo "Pass -h for help"
+echo "Pass -a to Enter a reminder Use CTRL-C or CTRL-D to exit when finsihed"
+echo "Pass -b to See All contents of reminders"
+echo "Psss -f and a argument that you would like to searcg in reminder for EX. Due date" 
+}
+
+
+catted () {
+cat $FILENAME
+}
+
+searchFile () {
+read -p "Enter a string that you would like to serch for in reminders" string
+grep $string reminder
+}
+
+while getopts ":habf" opt; do
+  case "${opt}" in
+    h | help )
+    helpFunc
+;;
+    a | read)
+      readInput
+      ;;
+    b | cat)
+      catted
+      ;;
+    f | search)
+      searchFile
+    ;;
+    :)
+      echo "Error: -${OPTARG} requires an argument"
+      exit 1
+      ;;
+    "?")
+      exit 1
+      ;;
+  esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#This script will keep info that is inputed as in Title Information Date and Time
+
+
+#First we will create a file using ""touch"" and "Read" for the name this file name will be put into a variable name $NAME.
+
+#Use one function to ask user for what the title will be store that into a variable $TITLE, and ask what information about reminder they want this will be store into $INFO. There will be a while loop checking if there is a character in $TITLE and $INFO, if not it will ask user for input again. 
+#Last thing this function will do is prompt for Date "read -r $DATE" and store the date in $DATE. 
+#After all this information is received the function will append ">>" all of it into the file that was created.
+
+
+#This function will read the file that was created and appended.  dont forget "-f" when reading
+#it will also take a input as $GREP to grep the file to make reading the reminders more efficitent and organized.
+
+
+
+
+#all the variables will be
+#$NAME
+#$TITLE
+#$INFO
+#$DATE
+#GREP
+
+
+# Use if and else statements to check if all inputs are valid. if not ask for input again
+
+# apend info using >> $NAME
+
+# grep file using $GREP variable, grep $GREP $FILE
+
+
+
+
+
+
+
